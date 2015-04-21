@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load staticfiles %}
+  <meta charset="UTF-8">
+  <title>Mis Vales</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+</head>
+<body>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">
+            {% if user.is_authenticated %}
+            <a href="/contactos">Mis Vales</a></h3>
+            {% else %}
+            Mis Vales</h3>
+            {% endif %}
+          <nav>
+            <ul class="nav masthead-nav">
+              {% if not user.is_authenticated %}
+                <li><a href="{% url 'accounts:login' %}">Login</a></li>
+              {% else %}
+                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+              {% endif %}      
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="inner cover">
+        <h1 class="cover-heading">Mis vales.</h1>
+        <p class="lead">Es tu directorio en donde podras guardar a todos tus contactos y valedores, plataforma hecha en Django para toda la comunidad del Dev.F y ya no se que mas poner.</p>
+        <p class="lead">
+          <a href="{% url 'accounts:signup' %}" class="btn btn-lg btn-default">Registrarse</a>
+        </p>
+      </div>
+      <div class="mastfoot">
+        <div class="inner">
+          <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+</body>
+</html>

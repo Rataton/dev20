@@ -1,0 +1,30 @@
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Contactos</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Iniciar Sesión</h1>
+    {% if form.non_field_errors %}
+      <p class="error">Sorry, that's not a valid username or password</p>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      {% for campo in form %}
+        <div class="form-group">
+          {{ campo.label_tag }}
+          {{ campo|attr:"class: form-control" }}
+        </div>
+      {% endfor %}
+      <input class="btn btn-primary" type="submit" value="Iniciar Sesión">
+    </form>
+  </div>
+</body>
+</html>
+

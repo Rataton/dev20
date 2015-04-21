@@ -1,0 +1,10 @@
+{% extends 'bases/base.html' %}
+{% block content %}
+	<form method="POST" action="#">
+		{% csrf_token %}
+		<div class="form-group">
+			¿Deseas eliminar este registro?
+		</div>
+		<button>Si, elimínalo</button>
+	</form>
+{% endblock %}

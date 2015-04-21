@@ -1,0 +1,13 @@
+{% extends 'bases/base.html' %}
+{% block content %}
+	<form method="POST" action="#">
+		{% csrf_token %}
+		{% for campo in form %}
+		<div class="form-group">
+			{{ campo.label_tag }}
+			{{ campo }}
+		</div>
+		{% endfor %}
+		<button>Actualizar</button>
+	</form>
+{% endblock %}

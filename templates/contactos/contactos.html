@@ -1,0 +1,14 @@
+{% extends 'bases/base.html' %}
+
+{% block content %}
+	<div class="container">
+		{% for contacto in contactos %}
+			<p> <a href="{% url 'contactos:person_edit' contacto.id %}">EDITAR</a> | 
+				<a href="{% url 'contactos:person_delete' contacto.id %}">BORRAR</a> | 
+				{{ contacto.name }} Núm. {{ contacto.number }}- {{ contacto.email }}</p>
+		{% endfor %}
+	</div>
+	<div>
+		<a href="{% url 'contactos:person_new' %}" class="btn">Agregar persona</a>
+	</div>
+{% endblock %}
