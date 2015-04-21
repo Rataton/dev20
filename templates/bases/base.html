@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	{% load staticfiles %}
-	<meta charset="UTF-8">
-	<title>Vales</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  {% load staticfiles %}
+  <meta charset="UTF-8">
+  <title>Vales</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-	<nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -16,26 +16,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Bienvenid@ {{ user }}</a>
+        <a class="navbar-brand" href="/">Mis Vales</a>
       </div>
-    {% if user.is_authenticated %}
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="{% url 'accounts:my_account' %}">Mi Cuenta</a></li>
-          <li><a href="#">Mis Grupos</a></li>
-          <li><a href="{% url 'contactos:get_contactos' %}">Mis Contactos</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">{{ user.name }} <span class="sr-only">(current)</span></a></li>
-          <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    {% endif %}
+      {% if user.is_authenticated %}
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'grupos:get_grupos' %}">Mis Grupos</a></li>
+            <li><a href="{% url 'contactos:get_contactos' %}">Mis Contactos</a></li>
+            <li><a href="{% url 'notas:get_notas' %}">Mis Notas</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Bienvenid@ {{ user }} <span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      {% endif %}
     </div><!--/.container-fluid -->
   </nav>
-	<div class="container">
-		{% block content %}
-		{% endblock %}
-	</div>
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
 </body>
 </html>

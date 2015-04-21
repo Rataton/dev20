@@ -15,16 +15,17 @@
         <div class="inner">
           <h3 class="masthead-brand">
             {% if user.is_authenticated %}
-            <a href="/contactos">Mis Vales</a></h3>
+            <a href="/contactos">Mis Vales</a>
             {% else %}
-            Mis Vales</h3>
+            Mis Vales
             {% endif %}
+          </h3>
           <nav>
             <ul class="nav masthead-nav">
               {% if not user.is_authenticated %}
                 <li><a href="{% url 'accounts:login' %}">Login</a></li>
               {% else %}
-                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+              <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
               {% endif %}      
             </ul>
           </nav>
@@ -47,3 +48,4 @@
 </div>  
 </body>
 </html>
+

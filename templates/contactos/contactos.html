@@ -1,14 +1,26 @@
 {% extends 'bases/base.html' %}
 
 {% block content %}
+	<p><a class='btn btn-primary btn-lg' href="{% url 'contactos:person_new' %}">Agregar Contacto</a></p>
 	<div class="container">
+		<table class="table table-hover">
+			<th>#</th>
+			<th>Nombre</th>
+			<th>Número</th>
+			<th>Email</th>
+			<th>Acciones</th>
 		{% for contacto in contactos %}
-			<p> <a href="{% url 'contactos:person_edit' contacto.id %}">EDITAR</a> | 
-				<a href="{% url 'contactos:person_delete' contacto.id %}">BORRAR</a> | 
-				{{ contacto.name }} Núm. {{ contacto.number }}- {{ contacto.email }}</p>
+			<tr>
+				<td>{{ contacto.pk }}</td>
+				<td>{{ contacto.name }} {{ contacto.last_name }}</td>
+				<td>{{ contacto.number }}</td>
+				<td><a href="mailto:{{ contacto.email }}">{{ contacto.email }}</a></td>
+				<td>
+					<a href="{% url 'contactos:person_edit' contacto.pk %}" class="btn btn-sm btn-primary">EDITAR</a>
+					<a href="{% url 'contactos:person_delete' contacto.pk %}" class="btn btn-sm btn-danger">BORRAR</a>
+				</td>
+			</tr>
 		{% endfor %}
-	</div>
-	<div>
-		<a href="{% url 'contactos:person_new' %}" class="btn">Agregar persona</a>
+		</table>
 	</div>
 {% endblock %}

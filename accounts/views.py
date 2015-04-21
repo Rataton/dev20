@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.views.generic import View
@@ -22,19 +23,18 @@ class Login(FormView):
 			return redirect(self.success_url)
 		return super(Login, self).dispatch(request, *args, **kwargs)
 
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('accounts:login'))
-    else:
-        form = UserCreationForm()
-    return render(
-        request, 'accounts/register.html', {'form': form}
-    )
+class Register(View):
+	form_class = UserCreationForm
+	template_name = 'accounts/register.html'
 
-def my_account(request):
-    return render(
-        request, 'accounts/my_account.html'
-    )
+	def get(self, request, *args, **kwargs):
+		form = self.form_class()
+		return render(request, self.template_name, {'form': form})
+
+	def post(self, request, *args, **kwargs):
+		form = self.form_class(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect(reverse('accounts:login'))
+		else:
+			return render(request, self.template_name, {'form': form}) 
