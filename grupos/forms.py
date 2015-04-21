@@ -1,5 +1,6 @@
 from django import forms
 from contactos.models import Group
+from contactos.models import Person
 
 class GroupForm(forms.ModelForm):
 
@@ -11,6 +12,12 @@ class GroupForm(forms.ModelForm):
 		model = Group
 		exclude = ('user', )
 		# fields
+
+	def __init__(self, *args, **kwargs):
+		user = kwargs.pop('user')
+		super(GroupForm, self).__init__(*args, **kwargs)
+		self.fields['person'].queryset = Person.objects.filter(user=user)
+
 
 class GroupFormEdit(forms.ModelForm):
 

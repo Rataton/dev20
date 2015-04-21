@@ -1,0 +1,24 @@
+{% extends 'bases/base.html' %}
+
+{% block content %}
+	<p><a class='btn btn-primary btn-lg' href="{% url 'notas:note_new' %}">Agregar nota</a></p>
+	<div class="container">
+		<table class="table table-hover">
+			<th>#</th>
+			<th>Título</th>
+			<th>Contenido</th>
+			<th>Acciones</th>
+		{% for nota in notas %}
+			<tr class="bg-{{ nota.color }}">
+				<td>{{ nota.pk }}</td>
+				<td>{{ nota.title }}</td>
+				<td>{{ nota.content }}</td>
+				<td>
+					<a href="{% url 'notas:note_edit' nota.pk %}" class="btn btn-sm btn-primary">EDITAR</a>
+					<a href="{% url 'notas:note_delete' nota.pk %}" class="btn btn-sm btn-danger">BORRAR</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
+{% endblock %}

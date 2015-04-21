@@ -21,6 +21,15 @@ class GroupView(FormView):
         form.save(user=self.request.user)
         return super(GroupView, self).form_valid(form)
 
+    def get_form_kwargs(self):
+        kwargs = super(GroupView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+    # def get_context_data(self, **kwargs):
+    #     user = self.kwargs['id']
+
+    #     return super(NoteDelete, self).get_context_data(**user)
+
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(GroupView, self).dispatch(request, *args, **kwargs)

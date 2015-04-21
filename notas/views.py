@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 #from django.template.context_processors import csrf
-from contactos.models import Notes
+from contactos.models import Note
 from django.views.generic import View
 from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.http import HttpResponse
@@ -62,9 +62,15 @@ class NoteDelete(DeleteView):
     def get_object(self, queryset=None):
         obj = Note.objects.get(id=self.kwargs['id'])
         return obj
+    def get_context_data(self, **kwargs):
+        item = Note.objects.get(id=self.kwargs['id'])
+        context = { 'item':item }
+
+        return super(NoteDelete, self).get_context_data(**context)
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
+        
         return super(NoteDelete, self).dispatch(request, *args, **kwargs)
 
 

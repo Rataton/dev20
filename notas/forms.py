@@ -1,5 +1,5 @@
 from django import forms
-from contactos.models import Notes
+from contactos.models import Note
 
 class NoteForm(forms.ModelForm):
 
@@ -8,7 +8,7 @@ class NoteForm(forms.ModelForm):
 		super(NoteForm, self).save(*args, **kwargs)
 
 	class Meta:
-		model = Notes
+		model = Note
 		exclude = ('user', )
 		# fields
 
@@ -18,6 +18,6 @@ class NoteFormEdit(forms.ModelForm):
 		super(NoteFormEdit, self).save(*args, **kwargs)
 
 	class Meta:
-		model = Notes
+		model = Note
 		exclude = ('user', )
 		# fields

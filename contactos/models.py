@@ -29,10 +29,14 @@ class Group(models.Model):
         return self.name
 
 
-class Notes(models.Model):
+class Note(models.Model):
+    # COLOR_CHOICES = (
+    #     ('blue')
+    # )
     title = models.CharField(max_length=50, verbose_name='Titulo')
     content = models.TextField(max_length=300, verbose_name='contenido')
     color = models.CharField(max_length=25, verbose_name='Color')
+    # color = models.IntegerField(choices=COLOR_CHOICES)
     user = models.ForeignKey(User)
 
     def __unicode__(self):
