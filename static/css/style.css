@@ -1,0 +1,11 @@
+.bg-blue { background-color:#79CFFF; }
+.bg-red { background-color:#FD9598; }
+.bg-yellow { background-color:#F0FF54; }
+.bg-black { background-color:#555555; color:#fff; }
+.bg-green { background-color:#9DFF43; }
+
+
+/* Extendiendo estilos */
+.notas [class*="col-"] {
+	margin: 4px;
+}

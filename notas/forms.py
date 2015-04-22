@@ -1,5 +1,5 @@
 from django import forms
-from contactos.models import Note
+from .models import Note
 
 class NoteForm(forms.ModelForm):
 

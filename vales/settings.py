@@ -37,11 +37,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
     'widget_tweaks',
     'accounts',
     'contactos',
     'grupos',
     'notas',
+    'api',
+    'rest_framework.authtoken', 
 )
 
 MIDDLEWARE_CLASSES = (

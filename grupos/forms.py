@@ -1,5 +1,5 @@
 from django import forms
-from contactos.models import Group
+from .models import Group
 from contactos.models import Person
 
 class GroupForm(forms.ModelForm):

@@ -1,0 +1,14 @@
+REST API
+
+URIs - Buenas prácticas
+No verbos
+Una URI por elemento
+Sin formato extensión
+Respetar jerarquía lógica
+
+Usar métodos de http para lo que son
+Notificar al usuario con códigos estándar
+Formatos Header Accept de respuesta
+
+
+

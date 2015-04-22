@@ -19,25 +19,25 @@ class Person(models.Model):
         return self.name + ' ' + self.last_name
 
 
-class Group(models.Model):
-    name = models.CharField(max_length=120, verbose_name=u'Nmobre')
-    description = models.CharField(max_length=300, verbose_name=u'Descripcion')
-    person = models.ManyToManyField(Person)
-    user = models.ForeignKey(User)
+# class Group(models.Model):
+#     name = models.CharField(max_length=120, verbose_name=u'Nmobre')
+#     description = models.CharField(max_length=300, verbose_name=u'Descripcion')
+#     person = models.ManyToManyField(Person)
+#     user = models.ForeignKey(User)
 
-    def __unicode__(self):
-        return self.name
+#     def __unicode__(self):
+#         return self.name
 
 
-class Note(models.Model):
-    # COLOR_CHOICES = (
-    #     ('blue')
-    # )
-    title = models.CharField(max_length=50, verbose_name='Titulo')
-    content = models.TextField(max_length=300, verbose_name='contenido')
-    color = models.CharField(max_length=25, verbose_name='Color')
-    # color = models.IntegerField(choices=COLOR_CHOICES)
-    user = models.ForeignKey(User)
+# class Note(models.Model):
+#     # COLOR_CHOICES = (
+#     #     ('blue')
+#     # )
+#     title = models.CharField(max_length=50, verbose_name='Titulo')
+#     content = models.TextField(max_length=300, verbose_name='contenido')
+#     color = models.CharField(max_length=25, verbose_name='Color')
+#     # color = models.IntegerField(choices=COLOR_CHOICES)
+#     user = models.ForeignKey(User)
 
-    def __unicode__(self):
-        return self.title
+#     def __unicode__(self):
+#         return self.title

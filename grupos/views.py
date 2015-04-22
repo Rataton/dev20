@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 #from django.template.context_processors import csrf
-from contactos.models import Group
+from .models import Group
 from django.views.generic import View
 from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.http import HttpResponse
